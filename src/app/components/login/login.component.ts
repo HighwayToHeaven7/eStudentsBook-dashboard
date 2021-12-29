@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
   form: any = {};
-
   loginStatus: boolean = false;
   loginFailed: boolean = false;
 
@@ -32,6 +31,8 @@ export class LoginComponent implements OnInit {
     }, error => {
       this.loginFailed = true;
     });
+
+
   }
 }
 
