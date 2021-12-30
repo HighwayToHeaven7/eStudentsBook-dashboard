@@ -15,7 +15,10 @@ export class EStudentsBookApiClientService {
 
   getNewUsers(): Observable<any> {
     return this.httpClient.get(API_URL + '/new', {responseType: 'json',
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })}
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+      })}
     );
   }
 
