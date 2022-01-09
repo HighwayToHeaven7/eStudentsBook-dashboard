@@ -3,31 +3,24 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {EStudentsBookApiClientService} from "../../services/e-students-book-api-client.service";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-list-of-students',
+  templateUrl: './list-of-students.component.html',
+  styleUrls: ['./list-of-students.component.css']
 })
-export class DashboardComponent implements OnInit {
-
-  newUserForm: any = {};
-
-
+export class ListOfStudentsComponent implements OnInit {
+  newUsersList: any = {};
   constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) {
   }
-
   ngOnInit(): void {
   }
 
-  createNewUser(): void {
-    this.apiClientService.postNewUser(this.newUserForm).subscribe(newUser => {
-      console.log(newUser.toString());
+  getListOfNewUsers(): void {
+    this.apiClientService.getNewUsers().subscribe(newUsers => {
+      this.newUsersList = newUsers;
     }, error => {
-      console.log("error: createNewUser()");
-      //this.logout();
-    });
+      this.logout();
+    })
   }
-
-
 
   logout(): void {
     this.tokenStorageService.signOut();

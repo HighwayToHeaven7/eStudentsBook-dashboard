@@ -1,0 +1,30 @@
+<div class="col-sm ">
+  <div class="row justify-content-center">
+    <div class="col-md-8 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-center align-items-center mb-3">
+        <span class="text-muted">Students</span>
+      </h4>
+      <div class="">
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Jan Kowalski</h6>
+              <small class="text-muted">jan.kowalski@student.uczelnia.pl</small>
+            </div>
+            <span class="text-muted">NEW</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed"
+              *ngFor="let user of newUsersList">
+            <div>
+              <h6 class="my-0">{{user.name + ' ' + user.surname}}</h6>
+              <small class="text-muted">{{user.email}}</small>
+            </div>
+            <span class="text-muted">NEW</span>
+          </li>
+        </ul>
+      </div>
+      <button class="w-100 btn btn-primary btn-lg" (click)="getListOfNewUsers()">Get</button>
+      <button class="w-100 btn btn-primary btn-lg mt-3" (click)="getListOfNewUsers()">Refresh</button>
+    </div>
+  </div>
+</div>

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
       this.loginStatus = true;
+      this.router.navigate(['dashboard']);
     }
   }
 
