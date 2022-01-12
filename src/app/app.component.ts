@@ -8,6 +8,9 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   isLoggedIn = false;
+  isAdmin = false;
+  isProfessor = false;
+  userType: any = "";
   //showDashboard = false;
   tokenName: any = "sads";
   constructor(private tokenStorageService: TokenStorageService,
@@ -16,11 +19,19 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-
+    this.userType = this.tokenStorageService.getUserType();
+    console.log(this.userType);
     if (this.isLoggedIn) {
       //this.router.navigate(['/dashboard']);
     }else{
       this.router.navigate(['/login']);
+    }
+
+    if(this.userType === "admin"){
+      this.isAdmin = true;
+    }
+    else if(this.userType === "profesor"){
+      this.isProfessor = true;
     }
   }
 
@@ -32,6 +43,6 @@ export class AppComponent implements OnInit{
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.replace('');
-    window.location.reload();
+    this.isLoggedIn = false;
   }
 }

@@ -11,6 +11,7 @@ import {CommonModule} from "@angular/common";
 import { ListOfStudentsComponent } from './components/list-of-students/list-of-students.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ListOfProfessorsComponent } from './components/list-of-professors/list-of-professors.component';
+import { ListSubjectStudentComponent } from './components/list-subject-student/list-subject-student.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ListOfProfessorsComponent } from './components/list-of-professors/list-
     LoginComponent,
     ListOfStudentsComponent,
     LogoutComponent,
-    ListOfProfessorsComponent
+    ListOfProfessorsComponent,
+    ListSubjectStudentComponent
   ],
   imports: [
     AppRoutingModule,

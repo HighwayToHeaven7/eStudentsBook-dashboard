@@ -8,15 +8,17 @@ const USER_EMAIL = "user_email";
   providedIn: 'root'
 })
 export class TokenStorageService {
+  userType : any = "";
 
   constructor() { }
 
   public signOut(): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.removeItem(USER_EMAIL);
     window.sessionStorage.clear();
   }
 
-  public saveToken(token: string, email: string): void {
+    public saveToken(token: string, email: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
     window.sessionStorage.removeItem(USER_EMAIL);
@@ -29,6 +31,12 @@ export class TokenStorageService {
 
   public getUserEmail(){
     return window.sessionStorage.getItem(USER_EMAIL);
+  }
+
+  public getUserType(){
+    this.userType = window.sessionStorage.getItem(USER_EMAIL);
+    return this.userType.split("@")[1].split(".")[0];
+
   }
 
   public isLogged() {

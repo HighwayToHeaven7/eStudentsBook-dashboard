@@ -12,12 +12,14 @@ export class ListOfStudentsComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) {
   }
   ngOnInit(): void {
-    this.getListOfStudents();
+      this.getListOfStudents();
+
   }
 
   getListOfStudents(): void {
     this.apiClientService.getAllStudents().subscribe(newStudents => {
       this.newStudentsList = newStudents;
+      console.log(newStudents);
     }, error => {
       this.logout();
     })
@@ -26,6 +28,5 @@ export class ListOfStudentsComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.replace('');
-    window.location.reload();
   }
 }

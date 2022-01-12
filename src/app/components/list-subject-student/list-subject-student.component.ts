@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from "../../services/token-storage.service";
 import {EStudentsBookApiClientService} from "../../services/e-students-book-api-client.service";
-import {AuthRequestDTO} from "../../dto/AuthRequestDTO";
 
 @Component({
-  selector: 'app-list-of-professors',
-  templateUrl: './list-of-professors.component.html',
-  styleUrls: ['./list-of-professors.component.css']
+  selector: 'app-list-subject-student',
+  templateUrl: './list-subject-student.component.html',
+  styleUrls: ['./list-subject-student.component.css']
 })
-export class ListOfProfessorsComponent implements OnInit {
-  newProfessorsList: any = {};
-  tokenName: any = "asas";
+export class ListSubjectStudentComponent implements OnInit {
+  newSubjectsList: any = {};
+  public isCollapsed = false;
+
 
   constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) { }
 
   ngOnInit(): void {
-      this.getListOfProfessors();
+    this.getListOfSubjectsAndStudents();
   }
 
-  getListOfProfessors(): void {
-    this.apiClientService.getAllProfessors().subscribe(newProfessors => {
-      this.newProfessorsList = newProfessors;
+  getListOfSubjectsAndStudents(): void {
+    this.apiClientService.getSubjectsWithStudents().subscribe(newSubjects => {
+      this.newSubjectsList = newSubjects;
+      console.log(this.newSubjectsList.subjects[0].subjectName);
     }, error => {
       this.logout();
     })

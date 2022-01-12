@@ -31,6 +31,15 @@ export class EStudentsBookApiClientService {
     );
   }
 
+  getSubjectsWithStudents(): Observable<any>{
+    return this.httpClient.get(API_URL + '/professors', {responseType: 'json',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+      })}
+    );
+  }
+
   postNewUser(newUser: NewUserRequestDTO): Observable<any> {
 
     return this.httpClient.post(API_URL, newUser, {responseType: 'json',

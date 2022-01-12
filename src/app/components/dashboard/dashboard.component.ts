@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-    if (!this.isLoggedIn) {
+    if (!this.isLoggedIn || this.tokenStorageService.getUserType() === "profesor") {
       this.router.navigate(['/login']);
     }
   }
@@ -35,6 +35,5 @@ export class DashboardComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.replace('');
-    window.location.reload();
   }
 }

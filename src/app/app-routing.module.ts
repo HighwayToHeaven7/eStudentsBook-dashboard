@@ -6,6 +6,7 @@ import {ListOfStudentsComponent} from "./components/list-of-students/list-of-stu
 import {AppComponent} from "./app.component";
 import {LogoutComponent} from "./components/logout/logout.component";
 import {ListOfProfessorsComponent} from "./components/list-of-professors/list-of-professors.component";
+import {ListSubjectStudentComponent} from "./components/list-subject-student/list-subject-student.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent /*canActivate:[AppComponent]*/},
   { path: 'list-of-students', component: ListOfStudentsComponent /*canActivate:[isLogged()]*/},
   { path: 'list-of-professors', component: ListOfProfessorsComponent /*canActivate:[isLogged()]*/},
+  { path: 'list-subject-student', component: ListSubjectStudentComponent /*canActivate:[isLogged()]*/},
   { path: 'logout', component: LogoutComponent}
 ]
 

@@ -20,7 +20,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
       this.loginStatus = true;
-      this.router.navigate(['dashboard']);
+      if(this.tokenStorageService.getUserType() === "admin"){
+        this.router.navigate(['dashboard']);
+      }
+      else if(this.tokenStorageService.getUserType() === "profesor"){
+        this.router.navigate(['list-subject-student']);
+      }
+
     }
   }
 
