@@ -8,15 +8,16 @@ import {EStudentsBookApiClientService} from "../../services/e-students-book-api-
   styleUrls: ['./list-of-students.component.css']
 })
 export class ListOfStudentsComponent implements OnInit {
-  newUsersList: any = {};
+  newStudentsList: any = {};
   constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) {
   }
   ngOnInit(): void {
+    this.getListOfStudents();
   }
 
-  getListOfNewUsers(): void {
-    this.apiClientService.getNewUsers().subscribe(newUsers => {
-      this.newUsersList = newUsers;
+  getListOfStudents(): void {
+    this.apiClientService.getAllStudents().subscribe(newStudents => {
+      this.newStudentsList = newStudents;
     }, error => {
       this.logout();
     })

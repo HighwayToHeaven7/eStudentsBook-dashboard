@@ -13,8 +13,17 @@ export class EStudentsBookApiClientService {
 
   constructor(private httpClient: HttpClient, private tokenStorageService: TokenStorageService) { }
 
-  getNewUsers(): Observable<any> {
-    return this.httpClient.get(API_URL + '/new', {responseType: 'json',
+  getAllStudents(): Observable<any> {
+    return this.httpClient.get(API_URL + '/students/all', {responseType: 'json',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+      })}
+    );
+  }
+
+  getAllProfessors(): Observable<any> {
+    return this.httpClient.get(API_URL + '/professors/all', {responseType: 'json',
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ` + this.tokenStorageService.getToken()

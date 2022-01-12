@@ -10,6 +10,7 @@ import {Router, RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import { ListOfStudentsComponent } from './components/list-of-students/list-of-students.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ListOfProfessorsComponent } from './components/list-of-professors/list-of-professors.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     DashboardComponent,
     LoginComponent,
     ListOfStudentsComponent,
-    LogoutComponent
+    LogoutComponent,
+    ListOfProfessorsComponent
   ],
   imports: [
     AppRoutingModule,
