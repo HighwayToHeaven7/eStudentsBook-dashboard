@@ -1,6 +1,24 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark h-20" role="navigation">
+  <a class="navbar-brand">Dashboard</a>
+  <div class="navbar-collapse collapse">
+    <ul class="navbar-nav navbar-collapse collapse">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" href="dashboard">Home</a>
+      </li>
+    </ul>
+    <ul *ngIf="isLoggedIn" class="nav navbar-nav navbar-center">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/list-of-students" href="list-of-students">List of students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/list-of-professors" href="list-of-professors">List of professors</a>
+      </li>
+    </ul>
+    <ul *ngIf="isLoggedIn" class="nav navbar-nav navbar-right">
+      <li  class="nav-item">
+        <a class="nav-link" routerLink="/logout" href="logout">logout, {{getUserName()}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <router-outlet></router-outlet>
-<!--
-*ngIf="!isLoggedIn"
-<app-login *ngIf="!isLoggedIn"></app-login>
-<app-dashboard *ngIf="showDashboard"></app-dashboard>
--->

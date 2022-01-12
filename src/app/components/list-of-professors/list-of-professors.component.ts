@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from "../../services/token-storage.service";
 import {EStudentsBookApiClientService} from "../../services/e-students-book-api-client.service";
+import {AuthRequestDTO} from "../../dto/AuthRequestDTO";
 
 @Component({
   selector: 'app-list-of-professors',
@@ -9,6 +10,8 @@ import {EStudentsBookApiClientService} from "../../services/e-students-book-api-
 })
 export class ListOfProfessorsComponent implements OnInit {
   newProfessorsList: any = {};
+  tokenName: any = "asas";
+
   constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) { }
 
   ngOnInit(): void {

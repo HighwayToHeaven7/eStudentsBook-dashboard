@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "./services/token-storage.service";
 import {Router} from "@angular/router";
-import {state} from "@angular/animations";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +8,8 @@ import {state} from "@angular/animations";
 })
 export class AppComponent implements OnInit{
   isLoggedIn = false;
-  showDashboard = false;
+  //showDashboard = false;
+  tokenName: any = "sads";
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router) {
   }
@@ -22,5 +22,16 @@ export class AppComponent implements OnInit{
     }else{
       this.router.navigate(['/login']);
     }
+  }
+
+  getUserName(): string {
+    this.tokenName = this.tokenStorageService.getUserEmail();
+    return this.tokenName;
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.replace('');
+    window.location.reload();
   }
 }

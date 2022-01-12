@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from "../../services/token-storage.service";
 import {EStudentsBookApiClientService} from "../../services/e-students-book-api-client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,12 +11,16 @@ import {EStudentsBookApiClientService} from "../../services/e-students-book-api-
 export class DashboardComponent implements OnInit {
 
   newUserForm: any = {};
+  isLoggedIn: any = false;
 
-
-  constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) {
+  constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (!this.isLoggedIn) {
+      this.router.navigate(['/login']);
+    }
   }
 
   createNewUser(): void {
@@ -23,11 +28,9 @@ export class DashboardComponent implements OnInit {
       console.log(newUser.toString());
     }, error => {
       console.log("error: createNewUser()");
-      //this.logout();
+      this.logout();
     });
   }
-
-
 
   logout(): void {
     this.tokenStorageService.signOut();
