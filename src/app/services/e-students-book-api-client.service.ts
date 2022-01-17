@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {NewUserRequestDTO} from "../dto/NewUserRequestDTO";
 import {TokenStorageService} from "./token-storage.service";
 import {NewSubjectCardDTO} from "../dto/NewSubjectCardDTO";
+import {NewGradeDTO} from "../dto/NewGradeDTO";
 
 const API_URL = 'http://localhost:8080/';
 
@@ -67,6 +68,16 @@ export class EStudentsBookApiClientService {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ` + this.tokenStorageService.getToken()
         })}
+    );
+  }
+
+  postNewGrade(newGrade: NewGradeDTO): Observable<any> {
+
+    return this.httpClient.post(API_URL + 'users/students/grades', newGrade, {responseType: 'json',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+      })}
     );
   }
 
