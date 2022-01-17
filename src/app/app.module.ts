@@ -12,6 +12,7 @@ import { ListOfStudentsComponent } from './components/list-of-students/list-of-s
 import { LogoutComponent } from './components/logout/logout.component';
 import { ListOfProfessorsComponent } from './components/list-of-professors/list-of-professors.component';
 import { ListSubjectStudentComponent } from './components/list-subject-student/list-subject-student.component';
+import { NewSubjectCardComponent } from './components/new-subject-card/new-subject-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ListSubjectStudentComponent } from './components/list-subject-student/l
     ListOfStudentsComponent,
     LogoutComponent,
     ListOfProfessorsComponent,
-    ListSubjectStudentComponent
+    ListSubjectStudentComponent,
+    NewSubjectCardComponent
   ],
   imports: [
     AppRoutingModule,

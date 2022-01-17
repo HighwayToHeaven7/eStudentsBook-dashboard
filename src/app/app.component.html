@@ -8,10 +8,16 @@
     </ul>
     <ul *ngIf="isLoggedIn&&isAdmin" class="nav navbar-nav navbar-center">
       <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" href="dashboard">Add user</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" routerLink="/list-of-students" href="list-of-students">List of students</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/list-of-professors" href="list-of-professors">List of professors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/new-subject-card" href="new-subject-card">Create subject card</a>
       </li>
     </ul>
 

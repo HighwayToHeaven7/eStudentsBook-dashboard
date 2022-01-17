@@ -3,8 +3,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {NewUserRequestDTO} from "../dto/NewUserRequestDTO";
 import {TokenStorageService} from "./token-storage.service";
+import {NewSubjectCardDTO} from "../dto/NewSubjectCardDTO";
 
-const API_URL = 'http://localhost:8080/users';
+const API_URL = 'http://localhost:8080/';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class EStudentsBookApiClientService {
   constructor(private httpClient: HttpClient, private tokenStorageService: TokenStorageService) { }
 
   getAllStudents(): Observable<any> {
-    return this.httpClient.get(API_URL + '/students/all', {responseType: 'json',
+    return this.httpClient.get(API_URL + 'users/students/all', {responseType: 'json',
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ` + this.tokenStorageService.getToken()
@@ -23,7 +24,16 @@ export class EStudentsBookApiClientService {
   }
 
   getAllProfessors(): Observable<any> {
-    return this.httpClient.get(API_URL + '/professors/all', {responseType: 'json',
+    return this.httpClient.get(API_URL + 'users/professors/all', {responseType: 'json',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+      })}
+    );
+  }
+
+  getAllSubjects(): Observable<any> {
+    return this.httpClient.get(API_URL + 'subjects/all', {responseType: 'json',
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ` + this.tokenStorageService.getToken()
@@ -32,7 +42,7 @@ export class EStudentsBookApiClientService {
   }
 
   getSubjectsWithStudents(): Observable<any>{
-    return this.httpClient.get(API_URL + '/professors', {responseType: 'json',
+    return this.httpClient.get(API_URL + 'users/professors', {responseType: 'json',
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ` + this.tokenStorageService.getToken()
@@ -42,7 +52,17 @@ export class EStudentsBookApiClientService {
 
   postNewUser(newUser: NewUserRequestDTO): Observable<any> {
 
-    return this.httpClient.post(API_URL, newUser, {responseType: 'json',
+    return this.httpClient.post(API_URL + 'users', newUser, {responseType: 'json',
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+        })}
+    );
+  }
+
+  postNewSubjectCard(newSubjectCard: NewSubjectCardDTO): Observable<any> {
+
+    return this.httpClient.post(API_URL + 'subject-cards', newSubjectCard, {responseType: 'json',
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ` + this.tokenStorageService.getToken()

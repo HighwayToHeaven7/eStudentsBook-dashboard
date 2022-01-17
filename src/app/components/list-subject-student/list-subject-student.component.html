@@ -1,6 +1,6 @@
 <div class="col-sm ">
-  <div class="row justify-content-center">
-    <div class="col-md-8 order-md-2 mb-4">
+  <div class="row justify-content-center w-100">
+    <div class="col-md-8 order-md-2 mb-4 w-25">
       <h4 class="d-flex justify-content-center align-items-center mb-3">
         <span class="text-muted">My Subjects with Students</span>
       </h4>
@@ -9,7 +9,7 @@
           <li class="list-group-item d-flex justify-content-center bg-light lh-condensed"
               *ngFor="let subjectsList of newSubjectsList.subjects;">
             <div>
-              <h6 class="my-0 mb-1">{{subjectsList.subjectName}}</h6>
+              <h6 class="my-0 mb-1">{{subjectsList.subject_name}}</h6>
               <small class="d-flex justify-content-left w-auto bg-white" *ngFor="let studentsList of subjectsList.students">
                 <div >{{studentsList.id + ' ' +studentsList.name + ' ' + studentsList.surname}}</div>
               </small>
