@@ -51,6 +51,15 @@ export class EStudentsBookApiClientService {
     );
   }
 
+  getStudentsGrades(endpoint: any): Observable<any>{
+    return this.httpClient.get(API_URL + endpoint, {responseType: 'json',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+      })}
+    );
+  }
+
   postNewUser(newUser: NewUserRequestDTO): Observable<any> {
 
     return this.httpClient.post(API_URL + 'users', newUser, {responseType: 'json',
@@ -75,6 +84,19 @@ export class EStudentsBookApiClientService {
 
     return this.httpClient.post(API_URL + 'users/students/grades', newGrade, {responseType: 'json',
       headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ` + this.tokenStorageService.getToken()
+      })}
+    );
+  }
+
+  editGrade(editGrade: NewGradeDTO, gradeID: string): Observable<any> {
+    console.log(editGrade);
+  console.log("service grade: "+ gradeID);
+    return this.httpClient.patch(API_URL + 'users/students/grades/' + gradeID, editGrade, {responseType: 'json',
+      headers: new HttpHeaders({
+        'Access-Control-Request-Method': 'PATCH',
+        'Accept': '*/*',
         'Content-Type': 'application/json',
         'Authorization': `Bearer ` + this.tokenStorageService.getToken()
       })}

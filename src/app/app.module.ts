@@ -14,6 +14,7 @@ import { ListOfProfessorsComponent } from './components/list-of-professors/list-
 import { ListSubjectStudentComponent } from './components/list-subject-student/list-subject-student.component';
 import { NewSubjectCardComponent } from './components/new-subject-card/new-subject-card.component';
 import { AddGradeComponent } from './components/add-grade/add-grade.component';
+import { EditGradeComponent } from './components/edit-grade/edit-grade.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddGradeComponent } from './components/add-grade/add-grade.component';
     ListOfProfessorsComponent,
     ListSubjectStudentComponent,
     NewSubjectCardComponent,
-    AddGradeComponent
+    AddGradeComponent,
+    EditGradeComponent
   ],
   imports: [
     AppRoutingModule,

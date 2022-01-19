@@ -9,6 +9,7 @@ import {ListOfProfessorsComponent} from "./components/list-of-professors/list-of
 import {ListSubjectStudentComponent} from "./components/list-subject-student/list-subject-student.component";
 import {NewSubjectCardComponent} from "./components/new-subject-card/new-subject-card.component";
 import {AddGradeComponent} from "./components/add-grade/add-grade.component";
+import {EditGradeComponent} from "./components/edit-grade/edit-grade.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'list-subject-student', component: ListSubjectStudentComponent /*canActivate:[isLogged()]*/},
   { path: 'new-subject-card', component: NewSubjectCardComponent /*canActivate:[isLogged()]*/},
   { path: 'add-grade', component: AddGradeComponent /*canActivate:[isLogged()]*/},
+  { path: 'edit-grade', component: EditGradeComponent /*canActivate:[isLogged()]*/},
   { path: 'logout', component: LogoutComponent}
 ]
 
