@@ -38,8 +38,6 @@ export class EditGradeComponent implements OnInit {
   getListOfSubjectsAndStudents(): any {
     this.apiClientService.getSubjectsWithStudents().subscribe(newSubjects => {
       this.newSubjectsList = newSubjects;
-      console.log(this.newSubjectsList.subjects[0].students[0])
-      console.log(this.newSubjectsList.subjects[0].subjectName);
       return this.newSubjectsList;
     }, error => {
       this.logout();
@@ -49,7 +47,6 @@ export class EditGradeComponent implements OnInit {
   getStudentsGrades(endpoint: any): any {
     this.apiClientService.getStudentsGrades(endpoint).subscribe(newGrades => {
       this.newGradesList = newGrades[0];
-      console.log(this.newGradesList.grades)
       return this.newGradesList;
     }, error => {
       this.logout();
@@ -57,7 +54,6 @@ export class EditGradeComponent implements OnInit {
   }
 
   whatSubjectSelected($event: any): void {
-    console.log($event.target.options[$event.target.options.selectedIndex].value);
     this.whatSubject = $event.target.options.selectedIndex;
     this.subjectID = $event.target.options[$event.target.options.selectedIndex].value;
     this.subjectWait = true;
@@ -65,21 +61,23 @@ export class EditGradeComponent implements OnInit {
 
   whatGradeSelected($event: any): void {
     if (this.whatGrade != 0) {
-      document.querySelector("li.active")!.setAttribute("class", "list-group-item list-group-item-action d-flex justify-content-between lh-condensed");
+      document.querySelector("li.active")!.setAttribute(
+        "class",
+        "list-group-item list-group-item-action d-flex justify-content-between lh-condensed"
+      );
     }
-    console.log($event.target.id);
     this.whatGrade = $event.target.id;
-    $event.target.active = true;
-    $event.target.setAttribute("class", "list-group-item list-group-item-action d-flex justify-content-between lh-condensed active");
+    $event.target.setAttribute(
+      "class",
+      "list-group-item list-group-item-action d-flex justify-content-between lh-condensed active"
+    );
   }
 
 
   whatStudentSelected($event: any): void {
-    console.log($event.target.options[$event.target.options.selectedIndex].value);
     this.studentID = $event.target.options[$event.target.options.selectedIndex].value;
     let endpoint = "users/students/"+this.studentID+"/subjects/"+this.subjectID;
     this.getStudentsGrades(endpoint.toString());
-    console.log(endpoint);
     this.studentWait = true;
   }
 
@@ -111,18 +109,13 @@ export class EditGradeComponent implements OnInit {
         break;
       }
     }
-    //this.whatSubject = $event.target.options.selectedIndex;
   }
 
   editGrade(): void {
     this.apiClientService.editGrade(this.editGradeForm, this.whatGrade).subscribe(editGrade => {
-      console.log(editGrade.toString());
     }, error => {
-      console.log("error: addGrade()");
-      //this.logout();
-      console.log(error);
       alert('Nie udało się :( - proszę o kontakt z administratorem bazy danych');
-      //window.location.reload();
+      window.location.reload();
     });
   }
 

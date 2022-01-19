@@ -11,8 +11,7 @@ import {window} from "rxjs";
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private _authService: TokenStorageService, private router: Router) {
-  }
+  constructor(private _authService: TokenStorageService, private router: Router) {}
 
   ngOnInit(): void {
     if(this._authService.getToken() != null){

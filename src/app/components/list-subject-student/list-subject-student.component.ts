@@ -11,8 +11,8 @@ export class ListSubjectStudentComponent implements OnInit {
   newSubjectsList: any = {};
   public isCollapsed = false;
 
-
-  constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+              private apiClientService :EStudentsBookApiClientService) { }
 
   ngOnInit(): void {
     this.getListOfSubjectsAndStudents();
@@ -21,7 +21,6 @@ export class ListSubjectStudentComponent implements OnInit {
   getListOfSubjectsAndStudents(): void {
     this.apiClientService.getSubjectsWithStudents().subscribe(newSubjects => {
       this.newSubjectsList = newSubjects;
-      console.log(this.newSubjectsList.subjects[0].subjectName);
     }, error => {
       this.logout();
     })

@@ -1,14 +1,10 @@
-
-<!--<div class="vh-100" style="background-image: linear-gradient(0deg, rgba(226, 226, 205, 1) 0%, rgba(235, 235, 241, 1) 100%);"> -->
-<div class="container-fluid overflow-hidden mt-3 w-50 " style="background:transparent;">
+<div class="container-fluid overflow-hidden mt-3 w-75 " style="background:transparent;">
   <main>
     <div class="row g-5 ">
       <div class="col-sm">
         <div class="row justify-content-center">
           <div class="col-md-7 col-lg-8">
             <h4 class="mb-3">Add grade</h4>
-
-            <!--(ngSubmit)="createNewSubjectCard()"-->
             <form autocomplete="off"
                   class="needs-validation"
                   name="addGradeForm"
@@ -19,8 +15,10 @@
                 <div class="col-6">
                   <label for="subject" class="form-label">Subject</label>
                   <select class="form-select" id="subject" required="" (change)="whatSubjectSelected($event)"
-                           name="subjects" [(ngModel)]="addGradeForm.subject_uuid" > <!--[(ngModel)]="newSubjectCardForm.role" #role="ngModel"-->
-                    <option *ngFor="let subject of newSubjectsList.subjects;" value="{{subject.id}}" >{{subject.subject_name}}</option>
+                           name="subjects" [(ngModel)]="addGradeForm.subject_uuid" >
+                    <option *ngFor="let subject of newSubjectsList.subjects;" value="{{subject.id}}">
+                      {{subject.subject_name}}
+                    </option>
                   </select>
                   <div class="invalid-feedback">
                     Please select a valid role.
@@ -30,7 +28,7 @@
                 <div class="col-6">
                   <label for="student" class="form-label">Student</label>
                   <select class="form-select" id="student" required=""
-                          name="student" [(ngModel)]="addGradeForm.student_uuid"> <!--[(ngModel)]="//newSubjectCardForm.account_status" #account_status="ngModel"-->
+                          name="student" [(ngModel)]="addGradeForm.student_uuid">
                     <ng-container *ngFor="let student of newSubjectsList.subjects[whatSubject].students" >
                     <option *ngIf="subjectWait" value="{{student.id}}" >{{student.name + ' ' + student.surname}}</option>
                     </ng-container>
@@ -44,7 +42,7 @@
                 <div class="col-6">
                   <label for="grade-type" class="form-label">Grade type</label>
                   <select class="form-select" id="grade-type" required="" (change)="whatGradeTypeSelected($event)"
-                          name="account_status" [(ngModel)]="addGradeForm.grade_type"> <!--[(ngModel)]="//newSubjectCardForm.account_status" #account_status="ngModel"-->s
+                          name="account_status" [(ngModel)]="addGradeForm.grade_type">
                     <option *ngFor="let gradetype of gradeTypeArray" value="{{gradetype}}" >{{gradetype}}</option>
                   </select>
                   <div class="invalid-feedback">
@@ -55,7 +53,7 @@
                 <div class="col-6">
                   <label for="lettergrade" class="form-label">Grade</label>
                   <select class="form-select" id="lettergrade" required=""
-                          name="account_status" [(ngModel)]="addGradeForm.grade"> <!--[(ngModel)]="//newSubjectCardForm.account_status" #account_status="ngModel"-->s
+                          name="account_status" [(ngModel)]="addGradeForm.grade">
                     <ng-container *ngFor="let grade of letterGrade">
                     <option *ngIf="letterType" value="{{grade}}" >{{grade}}</option>
                     </ng-container>
@@ -71,10 +69,10 @@
                   </div>
                 </div>
 
-                <div *ngIf="typeIsSelected" class="col-6">
+                <div class="col-6">
                   <label for="grade-weight" class="form-label">Grade weight</label>
                   <select class="form-select" id="grade-weight" required=""
-                          name="account_status" [(ngModel)]="addGradeForm.grade_weight"> <!--[(ngModel)]="//newSubjectCardForm.account_status" #account_status="ngModel"-->s
+                          name="account_status" [(ngModel)]="addGradeForm.grade_weight">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -86,19 +84,20 @@
                     Please select a valid status.
                   </div>
                 </div>
-                <div *ngIf="typeIsSelected" class="col-6">
-                  <textarea class="h-100 w-100" name="comment" [(ngModel)]="addGradeForm.grade_description" form="grade-form">Enter text here...</textarea>
+                <div class="col-6">
+                  <textarea class="h-100 w-100"
+                            name="comment"
+                            [(ngModel)]="addGradeForm.grade_description"
+                            form="grade-form">
+                    Enter text here...
+                  </textarea>
                 </div>
               </div>
-              <!--                <button class="w-100 btn btn-primary btn-lg" type="submit">Save</button>-->
               <button type="submit" class="w-100 btn btn-primary btn-lg" onClick="setTimeout(function(){location.reload();}, 500);">Save</button>
             </form>
           </div>
         </div>
       </div>
-
-
-
     </div>
   </main>
 </div>

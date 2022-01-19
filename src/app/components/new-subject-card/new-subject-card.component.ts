@@ -12,7 +12,8 @@ export class NewSubjectCardComponent implements OnInit {
   newSubjectsList: any = {};
   newSubjectCardForm: any = {};
 
-  constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+              private apiClientService :EStudentsBookApiClientService) { }
 
 
   ngOnInit(): void {
@@ -23,16 +24,14 @@ export class NewSubjectCardComponent implements OnInit {
   getListOfStudents(): void {
     this.apiClientService.getAllStudents().subscribe(newStudents => {
       this.newStudentsList = newStudents;
-      console.log(newStudents);
     }, error => {
-     // this.logout();
+      this.logout();
     })
   }
 
   getListOfSubjects(): void {
     this.apiClientService.getAllSubjects().subscribe(newSubjects => {
       this.newSubjectsList = newSubjects;
-      console.log(newSubjects);
     }, error => {
       this.logout();
     })
@@ -43,9 +42,6 @@ export class NewSubjectCardComponent implements OnInit {
     this.apiClientService.postNewSubjectCard(this.newSubjectCardForm).subscribe(newSubjectCard => {
       console.log(newSubjectCard.toString());
     }, error => {
-      console.log("error: createNewSubjectCard()");
-      //this.logout();
-      console.log(error);
       alert('Nie udało się :( - proszę o kontakt z administratorem bazy danych');
       window.location.reload();
     });

@@ -24,7 +24,8 @@ export class AddGradeComponent implements OnInit {
   percentageGrade: any = ["100%", "95%", "90%", "85%", "80%", "75%", "70%", "65%", "60%",
                           "55%", "50%", "45%", "40%", "35%", "30%", "0%"];
 
-  constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+              private apiClientService :EStudentsBookApiClientService) { }
 
   ngOnInit(): void {
     this.getListOfSubjectsAndStudents();
@@ -42,7 +43,6 @@ export class AddGradeComponent implements OnInit {
   }
 
   whatSubjectSelected($event: any): void {
-    console.log($event.target.options.selectedIndex);
     this.whatSubject = $event.target.options.selectedIndex;
     this.subjectWait = true;
   }
@@ -75,17 +75,11 @@ export class AddGradeComponent implements OnInit {
         break;
       }
     }
-    //this.whatSubject = $event.target.options.selectedIndex;
   }
 
   addGrade(): void {
-    console.log(this.addGradeForm);
     this.apiClientService.postNewGrade(this.addGradeForm).subscribe(addGrade => {
-      console.log(addGrade.toString());
     }, error => {
-      console.log("error: addGrade()");
-      //this.logout();
-      console.log(error);
       alert('Nie udało się :( - proszę o kontakt z administratorem bazy danych');
       window.location.reload();
     });

@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   loginStatus: boolean = false;
   loginFailed: boolean = false;
 
-  constructor(private router: Router, private authService: AuthService, private tokenStorageService: TokenStorageService) {
-  }
+  constructor(private router: Router, private authService: AuthService,
+              private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {

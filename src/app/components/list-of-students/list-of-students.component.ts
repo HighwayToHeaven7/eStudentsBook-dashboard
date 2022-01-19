@@ -9,11 +9,13 @@ import {EStudentsBookApiClientService} from "../../services/e-students-book-api-
 })
 export class ListOfStudentsComponent implements OnInit {
   newStudentsList: any = {};
-  constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) {
+
+  constructor(private tokenStorageService: TokenStorageService,
+              private apiClientService :EStudentsBookApiClientService) {
   }
+
   ngOnInit(): void {
       this.getListOfStudents();
-
   }
 
   getListOfStudents(): void {

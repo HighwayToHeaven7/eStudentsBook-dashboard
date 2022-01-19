@@ -12,7 +12,8 @@ export class ListOfProfessorsComponent implements OnInit {
   newProfessorsList: any = {};
   tokenName: any = "asas";
 
-  constructor(private tokenStorageService: TokenStorageService, private apiClientService :EStudentsBookApiClientService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+              private apiClientService :EStudentsBookApiClientService) { }
 
   ngOnInit(): void {
       this.getListOfProfessors();

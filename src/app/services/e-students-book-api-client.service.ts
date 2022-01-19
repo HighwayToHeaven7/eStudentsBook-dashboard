@@ -91,12 +91,9 @@ export class EStudentsBookApiClientService {
   }
 
   editGrade(editGrade: NewGradeDTO, gradeID: string): Observable<any> {
-    console.log(editGrade);
-  console.log("service grade: "+ gradeID);
+
     return this.httpClient.patch(API_URL + 'users/students/grades/' + gradeID, editGrade, {responseType: 'json',
       headers: new HttpHeaders({
-        'Access-Control-Request-Method': 'PATCH',
-        'Accept': '*/*',
         'Content-Type': 'application/json',
         'Authorization': `Bearer ` + this.tokenStorageService.getToken()
       })}
