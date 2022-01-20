@@ -1,25 +1,23 @@
-<!--style="background-image: linear-gradient(0deg, rgba(226, 226, 205, 1) 0%, rgba(235, 235, 241, 1) 100%);">
-  -->
-  <div class="container col d-flex justify-content-center align-items-center h-75 w-50">
-    <form class="form-control bg-dark rounded-3 w-50"
-          *ngIf="!loginStatus"
-          name="form"
-          (ngSubmit)="onSubmit()"
-          #f="ngForm"
-          novalidate>
-      <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
-      <div class="form-floating mb-2 text-dark">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
-               name="email" [(ngModel)]="form.email" #email="ngModel">
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating mb-3 text-dark">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-               name="password" [(ngModel)]="form.password" #password="ngModel">
-        <label for="floatingPassword">Password</label>
-      </div>
-      <button class="w-100 btn btn-lg btn-primary mb-2" onClick="setTimeout(function(){location.reload();}, 500);">
-        Sign in
-      </button>
-    </form>
-  </div>
+<div class="container col d-flex justify-content-center align-items-center h-75 w-50">
+  <form class="form-control bg-dark rounded-3 w-50"
+        *ngIf="!loginStatus"
+        name="form"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm"
+        novalidate>
+    <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
+    <div class="form-floating mb-2 text-dark">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+             name="email" [(ngModel)]="form.email" #email="ngModel">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-3 text-dark">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+             name="password" [(ngModel)]="form.password" #password="ngModel">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary mb-2" onClick="setTimeout(function(){location.reload();}, 500);">
+      Sign in
+    </button>
+  </form>
+</div>

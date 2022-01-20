@@ -14,7 +14,8 @@ export class AppComponent implements OnInit{
   isProfessor = false;
   userType: any = "";
   //showDashboard = false;
-  tokenName: any = "sads";
+  tokenName: any = "test";
+  name: any = "test";
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router) {
   }
@@ -40,6 +41,12 @@ export class AppComponent implements OnInit{
   getUserName(): string {
     this.tokenName = this.tokenStorageService.getUserEmail();
     return this.tokenName;
+  }
+
+  getName(): string{
+    this.name = this.tokenStorageService.getUserEmail();
+    this.name =  this.name.split('.')[0];
+    return this.name.replace(/^./, this.name[0].toUpperCase());
   }
 
   logout(): void {
