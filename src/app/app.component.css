@@ -1,1 +1,12 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+body {
+  background-image: linear-gradient(0deg, rgba(226, 226, 205, 1) 0%, rgba(235, 235, 241, 1) 100%);
+}
+
