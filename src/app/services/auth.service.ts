@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AuthRequestDTO} from "../dto/AuthRequestDTO";
 
-
 const AUTH_ENDPOINT = "http://localhost:8080/users/auth";
 
 const httpOptions = {
@@ -12,8 +11,10 @@ const httpOptions = {
 
 @Injectable({
   providedIn: 'root'
+
 })
-export class AuthService {
+
+  export class AuthService {
 
   constructor(private http: HttpClient) { }
 
@@ -22,5 +23,9 @@ export class AuthService {
       email: credentials.email,
       password: credentials.password
     }, httpOptions );
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
   }
 }
